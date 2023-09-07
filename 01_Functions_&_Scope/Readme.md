@@ -8,7 +8,6 @@
     - [ ]Global scope
 - [ ] Understand what it means that a function are first- class -objects
 - [ ] Explain what a higher-order function is
-- [ ] Grasp the relationship between
 - [ ] Describe what a callback and higher-order functions is
 
 ## Functions
