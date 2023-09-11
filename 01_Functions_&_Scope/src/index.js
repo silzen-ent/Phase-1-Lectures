@@ -68,3 +68,141 @@ const inventory = [
 
         }
     ]
+
+function sayHi(){
+    return "Hello World!"
+}
+sayHi()
+
+function sayHello(){
+    console.log("Hello World!")
+}
+
+sayHello()
+
+function squareNum(num){
+    return num*num
+}
+console.log(squareNum(2))
+
+function addTwo(num1, num2){
+    return num1 + num2
+}
+console.log(addTwo(5,10))
+
+
+const faveFood = food =>  `My Fave food is ${food}`
+
+console.log(faveFood("Cheese Pizza"))
+
+
+function greet(name, callback){
+    console.log("Hello World ")
+    callback(name)
+}
+
+function sayName(name){
+    console.log("Hello " + name)
+}
+
+greet("Stephen", sayName)
+
+function greeting(){
+    if(true){
+        let name = "Sam"
+        console.log("Hello " + name)
+    }
+    ///console.log(name)
+}
+greeting()
+let name = "David"
+
+function greetDavid(){
+    console.log("Hello " + name)
+}
+greetDavid()
+
+console.log(inventory[0])
+
+function priceFormatter(book){
+    return `$ ${book.price.toString()}`
+}
+
+console.log(priceFormatter(inventory[0]))
+
+// const titleAndAuthor = function(book){
+//     return `Title: ${book.title} by ${book.author}`
+// }
+// console.log(titleAndAuthor(inventory[0]))
+
+const titleAndAuthor = book => `${book.title} by ${book.author} is on sale!`
+console.log(titleAndAuthor(inventory[0]))
+
+const discountPrice = (discount, book) => Math.floor(book.price/discount)
+console.log(discountPrice(2, inventory[0]))
+
+const newTitle = 'The JavaScript Cookbook'
+function buildBook(title, price, author, imageUrl){
+    // Function scope
+    // Variables inside a function become local 
+    const bookObj = {}
+    bookObj.title = title
+    bookObj.price = price
+    bookObj.author = author
+    bookObj.inventory = 0
+    bookObj.reviews = []
+
+    if(!imageUrl){
+        //Block Scope
+        const defaultImage = 'placeHolderImage.jpg'
+        bookObj.imageUrl = defaultImage    
+    } else {
+        bookObj.imageUrl = imageUrl
+    }
+    return bookObj
+}
+inventory.push(buildBook(newTitle, 32, 'Shelly Powers', false))
+
+function mapOverArray(bookArray, cb){
+    const newArray = []
+    for(let book of bookArray){
+        newArray.push(cb(book))
+    }
+    return newArray
+}
+
+console.log(mapOverArray(inventory, (book) => book.title))
+console.log(mapOverArray(inventory, (book) => book.author))
+
+console.log(mapOverArray(inventory, titleAndAuthor))
+console.log(mapOverArray(inventory, priceFormatter))
+
+let arr = [3,4,5,6,7,8]
+for(let i =0; i<arr.length; i++){
+    arr[i] = arr[i] * 3
+}
+console.log(arr)
+
+let arr2 = [3,4,5,6,7,8]
+let mappedArray = arr2.map((num)=> {
+    return num*3
+})
+console.log(mappedArray)
+
+let users = [
+    {
+        firstName:"Stephen", lastName: "Lambert"
+    },
+    {
+        firstName:"Sam", lastName: "Waters"
+    },
+    {
+        firstName:"David", lastName: "Doan"
+    }
+]
+let fullnames = users.map((names)=>{
+    return `${names.firstName} ${names.lastName}`
+})
+console.log(fullnames)
+
+
