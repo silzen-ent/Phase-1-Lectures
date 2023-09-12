@@ -75,6 +75,16 @@ const bookStore = {
         }
     ]
   }
+
+console.log(document.querySelector('div'))
+console.log(document.querySelector('.list'))
+console.log(document.querySelector('#book-list'))
+console.log(document.getElementById("book-list"))
+test = document.querySelectorAll('div')
+test.forEach((i)=>{
+    
+
+})
 //* Create a function that uses a selector to get the header and add the bookStore name as its text content
 // Renders Header
 function renderHeader(){
