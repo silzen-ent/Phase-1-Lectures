@@ -98,11 +98,7 @@ div.innerHTML = ''
 
 ```
 
-## Student Practice
-Lets practice using [codepen](https://codepen.io/Stephen-Lambert/pen/XWymZGR)
-
 ## Deliverables 
-### Lecture 2
 data.js contains Book Store data for the application. It’s loaded before our index.js giving us access to the variable bookStore. 
 
 - Demo querySelector:    
