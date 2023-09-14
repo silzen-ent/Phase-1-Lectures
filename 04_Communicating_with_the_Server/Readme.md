@@ -101,9 +101,3 @@ fetch(url)
     - Chain a .then onto the fetch resource that takes a callback.
     - The callback should render the store on the DOM
     - Add a .catch to handle a failed promise 
-- Bonus
-    - Create a fetch request that fetches all stores
-    - Create a ul with a class name of store-menu.
-    - Create a li for each store that's appended to the ul. The li's text content should be the store name, and it should have an id with the store's id.
-    - Add an eventListener for click to each li.
-    - The listener should change the header and footer to the information to match the store that was selected. You can do this without an additional fetch, but if you'd like to demo fetch again, make a fetch call for the specific store information. 
