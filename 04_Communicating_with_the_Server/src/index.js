@@ -1,61 +1,55 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-// Render Functions
-    // Renders Header
-    function renderHeader(store){
-        document.querySelector('h1').textContent = store.name
+document.addEventListener("DOMContentLoaded", ()=> {
+    function renderHeader(){
+        return document.querySelector('h1').textContent = bookStore.name
     }
-    // Renders Footer
-    function renderFooter(store){
+    
+    console.log(renderHeader())
+    
+    function renderFooter(){
         const footerDivs = document.querySelectorAll('footer div')
-        footerDivs[0].textContent = store.name
-        footerDivs[1].textContent = store.address
-        footerDivs[2].textContent = store.hours
+        console.log(footerDivs)
+        footerDivs[0].textContent = bookStore.name
+        footerDivs[1].textContent = bookStore.address
+        footerDivs[2].textContent = bookStore.hours
+        return footerDivs
     }
-
-    function renderBookCard(cardData) {
+    console.log(renderFooter())
+    
+    const renderBookCard = (cardData) => {
+        console.log(cardData)
         const li = document.createElement('li')
-        const h3 = document.createElement('h3')
+        const h3 = document.createElement("h3")
         const pAuthor = document.createElement('p')
         const pPrice = document.createElement('p')
-        const img = document.createElement('img')
+        const image = document.createElement('img')
         const btn = document.createElement('button')
-
         h3.textContent = cardData.title
         pAuthor.textContent = cardData.author
-        pPrice.textContent = `$${cardData.price}`
-        btn.textContent = 'Delete'
-
-        img.src = cardData.imageUrl
+        pPrice.textContent = `$ ${cardData.price}`
+        btn.textContent = "Delete"
+        image.src = cardData.imageUrl
         li.className = 'list-li'
-
-        //Event Listeners 
-        btn.addEventListener('click',()=>li.remove())
-    
-        li.append(h3,pAuthor,pPrice,img,btn)
+        li.append(h3, pAuthor, pPrice, image, btn)
         document.querySelector('#book-list').append(li)
+        btn.addEventListener('click', (e) => {li.remove()})
     }
-
-// Event handlers 
-    function handleForm(e){
+    bookStore.inventory.forEach(renderBookCard)
+    
+    document.querySelector('label').addEventListener('click', (event) => console.log(event))
+    
+    document.querySelector("#book-form").addEventListener("submit", (e) => {
+        console.log(e)
         e.preventDefault()
-        //Builds Book
         const book = {
             title: e.target.title.value,
-            author:e.target.author.value,
+            author: e.target.author.value,
             price: e.target.price.value,
             imageUrl: e.target.imageUrl.value,
-            inventory:e.target.inventory.value,
-            reviews:[]
+            inventory: e.target.inventory.value,
+            reviews: []
         }
+        console.log(book.title)
+        debugger;
         renderBookCard(book)
-    }
-
-//Invoking functions
-    renderHeader(bookStore)
-    renderFooter(bookStore)
-    bookStore.inventory.forEach(renderBookCard)
-    document.querySelector('#book-form').addEventListener('submit', handleForm)
-
-
+    })
 })

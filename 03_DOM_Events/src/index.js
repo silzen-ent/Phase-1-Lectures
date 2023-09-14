@@ -1,6 +1,4 @@
-
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", ()=> {
     function renderHeader(){
         return document.querySelector('h1').textContent = bookStore.name
     }
@@ -37,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //     li.append(h3, pAuthor, pPrice, image, btn)
     //     document.querySelector('#book-list').append(li)
     // })
-    
     //* Refactor to make the anonymous callback its own function so it can be reused later. 
+    
     const renderBookCard = (cardData) => {
         console.log(cardData)
         const li = document.createElement('li')
@@ -55,26 +53,63 @@ document.addEventListener('DOMContentLoaded', () => {
         li.className = 'list-li'
         li.append(h3, pAuthor, pPrice, image, btn)
         document.querySelector('#book-list').append(li)
-        btn.addEventListener('click', () => li.remove())
+        btn.addEventListener('click', (e) => {li.remove()})
     }
     bookStore.inventory.forEach(renderBookCard)
     
+    document.querySelector('label').addEventListener('click', (event) => console.log(event))
     
-    document.querySelector('label').addEventListener('click',(e)=> console.log(e))
+    // const form = document.querySelector("#book-form")
+    // form.addEventListener()
     
-    function handleForm(e){
+    // function handleForm(e){
+    //     console.log(e)
+    //     e.preventDefault()
+    //     const book = {
+    //         title: e.target.title.value,
+    //         author: e.target.author.value,
+    //         price: e.target.price.value,
+    //         imageUrl: e.target.imageUrl.value,
+    //         inventory: e.target.inventory.value,
+    //         reviews: []
+    //     }
+    //     console.log(book.title)
+    //     debugger;
+    //     renderBookCard(book)
+    // }
+    // document.querySelector("#book-form").addEventListener("submit", handleForm)
+    
+    document.querySelector("#book-form").addEventListener("submit", (e) => {
+        console.log(e)
         e.preventDefault()
         const book = {
             title: e.target.title.value,
-            author:e.target.author.value,
+            author: e.target.author.value,
             price: e.target.price.value,
             imageUrl: e.target.imageUrl.value,
-            inventory:e.target.inventory.value,
-            reviews:[]
+            inventory: e.target.inventory.value,
+            reviews: []
         }
+        console.log(book.title)
+        debugger;
         renderBookCard(book)
+    })
     
-    }
-    document.querySelector('#book-form').addEventListener('submit', handleForm)
+    // document.querySelector("#book-form").addEventListener("submit", function(e){
+    //     console.log(e)
+    //     e.preventDefault()
+    //     const book = {
+    //         title: e.target.title.value,
+    //         author: e.target.author.value,
+    //         price: e.target.price.value,
+    //         imageUrl: e.target.imageUrl.value,
+    //         inventory: e.target.inventory.value,
+    //         reviews: []
+    //     }
+    //     console.log(book.title)
+    //     debugger;
+    //     renderBookCard(book)
+    // })
+    
     
 })
