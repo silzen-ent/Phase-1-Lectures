@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", ()=> {
+
+    
     function renderHeader(){
         return document.querySelector('h1').textContent = bookStore.name
     }
-    
-    console.log(renderHeader())
     
     function renderFooter(){
         const footerDivs = document.querySelectorAll('footer div')
@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         footerDivs[2].textContent = bookStore.hours
         return footerDivs
     }
-    console.log(renderFooter())
-    
+
     const renderBookCard = (cardData) => {
         console.log(cardData)
         const li = document.createElement('li')
@@ -35,10 +34,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }
     bookStore.inventory.forEach(renderBookCard)
     
-    document.querySelector('label').addEventListener('click', (event) => console.log(event))
-    
     document.querySelector("#book-form").addEventListener("submit", (e) => {
-        console.log(e)
         e.preventDefault()
         const book = {
             title: e.target.title.value,
@@ -48,8 +44,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
             inventory: e.target.inventory.value,
             reviews: []
         }
-        console.log(book.title)
-        debugger;
         renderBookCard(book)
     })
+    
+    
 })
