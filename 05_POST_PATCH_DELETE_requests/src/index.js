@@ -1,46 +1,51 @@
 document.addEventListener("DOMContentLoaded", ()=> {
-        
+
+    //Fetch Requests
+    // fetch("http://localhost:3000/books")
+    // .then(response => response.json())
+    // .then(books => books.forEach(renderBookCard))
+
+    //Fetch one resource
     // fetch('http://localhost:3000/stores/1')
-    // .then(res => res.json())
+    // .then(response => response.json())
     // .then(store => {
+    //     //hoisting this function
     //     renderHeader(store)
     //     renderFooter(store)
     // })
-    // .catch(e => console.error(e))
-
-    // fetch('http://localhost:3000/books')
-    // .then(res => res.json())
-    // .then(books => books.forEach(renderBookCard))
-    // .catch(e => console.error(e))
 
     function fetchResource(url){
         return fetch(url)
-        .then(res => res.json())
+        .then(response => response.json())
     }
 
-    fetchResource('http://localhost:3000/stores/1')
-        .then(store => {
-            renderHeader(store)
-            renderFooter(store)
-        })
-        .catch(e => console.error(e))
-    
-        fetchResource('http://localhost:3000/books')
-        .then(books => books.forEach(renderBookCard))
-        .catch(e => console.error(e))
+    fetchResource('http://localhost:3000/stores/2')
+    .then(store => {
+        console.log(store)
+        renderHeader(store)
+        renderFooter(store)
+    })
+    .catch(e => console.log(e))
+
+    fetchResource('http://localhost:3000/books')
+    .then(books => books.forEach(renderBookCard))
+    .catch(e => console.error(e))
+
 
     function renderHeader(store){
+        console.log(store)
         return document.querySelector('h1').textContent = store.name
     }
     
     function renderFooter(store){
         const footerDivs = document.querySelectorAll('footer div')
+        console.log(footerDivs)
         footerDivs[0].textContent = store.name
         footerDivs[1].textContent = store.address
         footerDivs[2].textContent = store.hours
         return footerDivs
     }
-    
+
     const renderBookCard = (cardData) => {
         console.log(cardData)
         const li = document.createElement('li')
