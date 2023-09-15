@@ -46,6 +46,32 @@ document.addEventListener("DOMContentLoaded", ()=> {
         return footerDivs
     }
 
+    function handleDelete(cardData,event){
+        event.preventDefault()
+        fetch(`http://localhost:3000/books/${cardData.id}`, {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+        })
+        .then(res => res.json())
+        .then(event.target.parentElement.remove())
+    }
+
+    function handleUpdate(cardData, event){
+        event.preventDefault()
+
+        const obj = {
+            inventory: event.target.value
+        }
+
+        fetch(`http://localhost:3000/books/${cardData.id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(obj)
+        })
+        .then(res => res.json())
+        .catch(e => console.log(e))
+    }
+
     const renderBookCard = (cardData) => {
         console.log(cardData)
         const li = document.createElement('li')
@@ -54,18 +80,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const pPrice = document.createElement('p')
         const image = document.createElement('img')
         const btn = document.createElement('button')
+        const pInventory = document.createElement('input')
         h3.textContent = cardData.title
         pAuthor.textContent = cardData.author
         pPrice.textContent = `$ ${cardData.price}`
+        pInventory.type = "number"
+        pInventory.value = cardData.inventory
         btn.textContent = "Delete"
         image.src = cardData.imageUrl
         li.className = 'list-li'
-        li.append(h3, pAuthor, pPrice, image, btn)
+        li.append(h3, pAuthor, pPrice, image, btn, pInventory)
         document.querySelector('#book-list').append(li)
-        btn.addEventListener('click', (e) => {li.remove()})
+        btn.addEventListener('click', (e) => handleDelete(cardData, e))
+        pInventory.addEventListener("change", (e)=> handleUpdate(cardData, e))
     }
     
-    document.querySelector("#book-form").addEventListener("submit", (e) => {
+    function handleForm(e){
         e.preventDefault()
         const book = {
             title: e.target.title.value,
@@ -75,8 +105,20 @@ document.addEventListener("DOMContentLoaded", ()=> {
             inventory: e.target.inventory.value,
             reviews: []
         }
-        renderBookCard(book)
-    })
+
+        fetch("http://localhost:3000/books", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({book})
+            })
+            .then(res => res.json())
+            //another way to send the returned response to renderBookCard
+            // .then(data => renderBookCard(data))
+            .then(renderBookCard)
+            .catch(e => console.log(e))
+    }
+
+    document.querySelector("#book-form").addEventListener("submit", handleForm)
     
     
 })
