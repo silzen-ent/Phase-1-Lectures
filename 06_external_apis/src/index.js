@@ -5,7 +5,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=10", {
 .then(data => console.log(data))
 
 import {apiKEY} from "./keys.js"
-console.log(apiKEY)
 
 document.addEventListener("DOMContentLoaded", ()=> {
 
