@@ -1,3 +1,12 @@
+fetch("https://pokeapi.co/api/v2/pokemon?limit=10", {
+    mode: 'cors'
+})
+.then(response => response.json())
+.then(data => console.log(data))
+
+import {apiKEY} from "./keys.js"
+console.log(apiKEY)
+
 document.addEventListener("DOMContentLoaded", ()=> {
 
     //Fetch Requests
@@ -49,10 +58,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
     function handleDelete(cardData,event){
         event.preventDefault()
         fetch(`http://localhost:3000/books/${cardData.id}`, {
-            method: "DELETE",
-            headers: {"Content-Type": "application/json"},
+            method: "DELETE"
         })
-        .then(res => res.json())
         .then(event.target.parentElement.remove())
     }
 
@@ -108,6 +115,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
         fetch("http://localhost:3000/books", {
                 method: "POST",
+                mode: "cors",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({book})
             })
@@ -136,7 +144,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const search = e.target.search.value
         console.log(search)
 
-        fetch(``)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${apiKEY}`)
         .then(res => res.json())
         .then(books => {
             console.log(books)

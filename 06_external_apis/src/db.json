@@ -117,24 +117,6 @@
       ],
       "inventory": 5,
       "imageUrl": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQyf6xSyTHc7a8mx17ikh6GeTohc88Hn0UgkN-RNF-h4iOwVlkW"
-    },
-    {
-      "id": 7,
-      "title": "Cracking the Coding Interview",
-      "author": "Gayle Laakmann McDowell",
-      "price": 49.95,
-      "reviews": [
-        {
-          "userID": 99,
-          "content": "One of the most helpful books for taking on the tech interview"
-        },
-        {
-          "userID": 20,
-          "content": "Great but I just wish it was in JavaScript instead of Java"
-        }
-      ],
-      "inventory": "23",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg"
     }
   ]
 }
