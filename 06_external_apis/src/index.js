@@ -1,10 +1,8 @@
-// fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
-// .then(res => res.json())
-// .then(data => {
-//             // renderPokemon(data)
-//             // showDetails(data[0])
-//             console.log(data)
-//         })
+fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+.then(res => res.json())
+.then(data => {
+            console.log(data)
+        })
 import {apiKEY} from "./keys.js"
 console.log(apiKEY)
 
