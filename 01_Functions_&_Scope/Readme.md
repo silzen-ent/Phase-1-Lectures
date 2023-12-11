@@ -62,7 +62,7 @@ Arrow functions are another way to declare functions with some added benefits.
 
 ```
 // An arrow function can avoid {} if it's return done on a single line or with () 
-// An arrow function with a single paramater doesn't need the () around the paramater. 
+// An arrow function with a single parameter doesn't need the () around the paramater. 
 const faveFood = food =>  `My fave food is ${food}`
 const faveFood = food => (
      `My fave food is ${food}`
@@ -71,11 +71,9 @@ faveFood('cookies')
 
 ```
 
-Arrow functions also have the added benefit of passing context, but we won't be covering that today. 
-
 ## Callbacks and HigherOrder Functions 
 
-Functions in JavaScript are treated like any other variable. When functions are treated like this, we refer to them as First class. One of the most significant benefits of this is that functions in JavaScript can be passed as arguments to other functions.
+Functions in JavaScript are treated like any other variable. When functions are treated like this, we refer to them as First class objects. One of the most significant benefits of this is that functions in JavaScript can be passed as arguments to other functions.
 
 ```
 // A function that returns a function is called a Higher-Order Function.
