@@ -69,15 +69,140 @@ const inventory = [
         }
     ]
 
+    function sayHi() {
+        return "Hi"
+      }
+      console.log(sayHi())
+      function sayHello() {
+        console.log("Hello World!")
+      }
+      sayHello()
+      function squareNumber(num){
+        console.log(num*num)
+        return num * num
+      }
+      // console.log(squareNumber(20))
+      squareNumber(20)
+
+      function addition(num1, num2){
+        console.log(num1 + num2)
+        return num1 + num2
+      }
+      addition(10,10)
+
+      const faveFood = food => `My favorite food is ${food}`
+      console.log(faveFood("pizza"))
+
+      let firstname = "Stephen"
+      
+      function greeting(name, callback) {
+        console.log("Hello!")
+        console.log(firstname)
+        callback(name)
+      }
+
+      function sayName(name){
+        console.log("Hello " + name)
+        return "Hello" + name
+      }
+
+      function sayGoodbye(name){
+        console.log("Goodbye " + name)
+        return "Goodbye" + name
+      }
+
+      greeting("Steven", sayName)
+      greeting("Stephen", sayGoodbye)
+
+      console.log(inventory[1].title)
+
+      function priceFormatter(book){
+        console.log(book)
+        return `$ ${book.price}`
+      }
+
+      const priceFormatter2 = book => {
+        console.log(book)
+        return `$ ${book.price}`
+      }
+
+      console.log(priceFormatter(inventory[0]))
+      console.log(priceFormatter2(inventory[1]))
+
+      const titleAndAuthor = book => `Title: ${book.title} by ${book.author}`
+      console.log(titleAndAuthor(inventory[0]))
+
+      const bookOnSale = book => `Title: ${book.title} is on sale!`
+      console.log(bookOnSale(inventory[0]))
+
+      const discountPrice = (discount, book) => book.price / discount
+      console.log(discountPrice(2.00, inventory[0]))
+
+      const newTitle = "The Javascript Cookbook"
+      function buildBook(title, price, author, imageURL){
+        const obj = {}
+        obj.title = title
+        obj.price = price
+        obj.author = author
+        obj.imageURL = imageURL
+        obj.reviews = []
+        obj.inventory = 0
+        obj.id = inventory.length + 1
+
+        if(!imageURL){
+            const defaultImage = "placeholder.jpg"
+            obj.imageURL = defaultImage
+        }
+        else{
+            obj.imageURL = imageURL
+        }
+        return obj
+      }
+      inventory.push(buildBook(newTitle, 25, "Shelly Powers"))
+      console.log(inventory)
 
 
+    function mapOverArray(book, callback){
+        const newInventory = []
+        for(let item of book){
+            console.log(item)
+            newInventory.push(callback(item))
+        }
+        return newInventory
+    }
+    console.log(mapOverArray(inventory, (book) => book.title))
+    console.log(mapOverArray(inventory, (book) => book.author))
+    console.log(mapOverArray(inventory, titleAndAuthor))
+    console.log(mapOverArray(inventory, priceFormatter))
+    
+    let arr = [1,2,3,4,5,6,7,8,9]
+    for(let i=0; i< arr.length; i++){
+        arr[i] = arr[i] * 3
+    }
+    console.log(arr)
 
+    let arr2 = [2,4,6,8,10,12]
+    let mappedArray = arr2.map((num)=> {
+        return num * 3
+    })
+    console.log(mappedArray)
 
+    
+    let users = [
+        {
+            firstname: "Stephen",
+            lastname: "Lambert"
+        },
+        {
+            firstname: "David",
+            lastname: "Doan"
+        }
+    ]
 
-
-
-
-
-
-
+    let fullnames = users.map((names)=> {
+        console.log(names)
+        return `${names.firstname} ${names.lastname}`
+    })
+    console.log(fullnames)
+    
 
