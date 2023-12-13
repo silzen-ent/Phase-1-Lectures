@@ -52,5 +52,39 @@ const renderBookCard = (cardData) => {
     li.className = 'list-li'
     li.append(h3, pAuthor, pPrice, image, btn)
     document.querySelector('#book-list').append(li)
+    btn.addEventListener("click", (e) => {
+        // li.remove();
+        // e.target.parentElement.remove()
+        e.target.parentNode.remove();
+    })
 }
 bookStore.inventory.forEach(renderBookCard)
+
+function log(event){
+    console.log(event)
+}
+
+document.querySelector("label").addEventListener("click", (e) => {
+    console.log(e)
+})
+
+document.querySelectior("#book-form")
+FormData.addEventListener("submit", (event) => {
+    console.log(event)
+    event.preventDefault();
+    const book = {
+        title: event.target["title"].value,
+        author: event.target.author.value,
+        price: event.target["book-price"].value,
+        imageUrl: event.target.imageUrl.value,
+        inventory: event.target.inventory.value,
+        reviews: []
+    }
+    console.log(book)
+    debugger;
+renderBookCard(book);
+
+})
+
+
+
