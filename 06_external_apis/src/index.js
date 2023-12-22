@@ -1,3 +1,11 @@
+import {apiKEY} from "./keys.js"
+console.log(apiKEY)
+
+// fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
+// .then(response => response.json())
+// .then(data => console.log(data))
+// .then(data => data.results.forEach((poke) => console.log(poke)))
+
 document.addEventListener('DOMContentLoaded', () => {
     // Fetch requests 
         // Function for making a GET request 
@@ -88,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const search = e.target.search.value
             console.log(search)
 
-            fetch(``)
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${apiKEY}`)
             .then(res => res.json())
             .then(books => {
                 console.log(books)
